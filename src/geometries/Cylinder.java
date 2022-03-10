@@ -1,7 +1,7 @@
 package geometries;
 import primitives.Ray;
 import primitives.Point;
-import java.util.Vector;
+import primitives.Vector;
 
 public class Cylinder extends Tube implements Geometry{
     double hight;

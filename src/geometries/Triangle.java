@@ -7,9 +7,9 @@ public class Triangle extends  Polygon implements Geometry{
         super(vertices);
     }
 
+
     @Override
     public String toString() {
-        return "Triangle [vertices=" + vertices.toString() + ",  plane=" + plane.toString() + "]";
+        return super.toString();
     }
-
 }
