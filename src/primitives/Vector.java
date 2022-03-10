@@ -13,10 +13,12 @@ public class Vector extends Point {
     }
     @Override
     public String toString() {return "Vector = " + super.toString();}
+
     public Vector add(Vector v)
     {
         return this.add(v);
     }
+
     public Vector scale(double scl) {
         Vector v = new Vector(this.spoint.d1*scl,this.spoint.d2*scl,this.spoint.d3*scl);
         return v;
