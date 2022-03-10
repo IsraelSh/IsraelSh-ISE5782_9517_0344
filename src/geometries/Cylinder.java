@@ -2,6 +2,11 @@ package geometries;
 import primitives.Ray;
 import primitives.Point;
 import primitives.Vector;
+/**
+ * Cylinder
+ * @author sendi pardes Israel Shlomo
+ *
+ */
 
 public class Cylinder extends Tube implements Geometry{
     double hight;

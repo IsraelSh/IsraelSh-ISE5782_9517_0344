@@ -4,6 +4,11 @@ import primitives.Point;
 import primitives.Util;
 import primitives.Vector;
 
+/**
+ * Sphare
+ * @author sendi pardes Israel Shlomo
+ *
+ */
 
 public class Sphare implements Geometry{
     Point center;

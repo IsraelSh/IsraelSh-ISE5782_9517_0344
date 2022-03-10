@@ -1,13 +1,30 @@
 package primitives;
 import static primitives.Util.isZero;
 
+/**
+ * Class Point
+ * 3-Dimensional coordinate system.
+ * @author Sendi pardes Israel Shlomo
+ */
+
 
 public class Point {
+    /**
+     * constructor that receiving Object from Double3 type
+     * @param spoint
+     */
     public final Double3 spoint;
+
     public Double3 getSpoint()
     {
         return spoint;
     }
+    /**
+     * constructor that receiving the values of the three coordinates from Double
+     * @param x
+     * @param y
+     * @param z
+     */
     public Point(double x,double y,double z) {
         spoint =new Double3(x,y,z);}
     public Point(Double3 d){spoint =d;}
@@ -25,6 +42,13 @@ public class Point {
     public String toString() {
         return String.format("Point: "+ spoint.toString());
     }
+    /**
+     * Sum two floating point triads into a new triad where each couple of numbers
+     * is summarized
+     *
+     * @param  p2  right handle side operand for addition
+     * @return result of add
+     */
     public 	Point add(Point p2)
     {
         double X = p2.spoint.d1 + this.spoint.d1;
@@ -33,6 +57,13 @@ public class Point {
         Point newpoint = new Point(X,Y,Z);
         return newpoint;
     }
+    /**
+     * Subtract two floating point triads into a new triad where each couple of
+     * numbers is subtracted
+     *
+     * @param p2 right handle side operand for addition
+     * @return result of add
+     */
     public Vector subtract(Point p2){
         double x = this.spoint.d1-p2.spoint.d1;
         double y = this.spoint.d2-p2.spoint.d2;
