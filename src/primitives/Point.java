@@ -33,14 +33,14 @@ public class Point {
         Point newpoint = new Point(X,Y,Z);
         return newpoint;
     }
-    public Point subtract (Point p2)
-    {
-        double X = p2.spoint.d1-this.spoint.d1;
-        double Y = p2.spoint.d2-this.spoint.d2;
-        double Z = p2.spoint.d3-this.spoint.d3;
-        Point newpoint = new Point(X,Y,Z);
-        return newpoint;
+    public Vector subtract(Point p2){
+        double x = this.spoint.d1-p2.spoint.d1;
+        double y = this.spoint.d2-p2.spoint.d2;
+        double z = this.spoint.d3-p2.spoint.d3;
+        Vector newVector = new Vector(x,y,z);
+        return newVector;
     }
+
 
 
 

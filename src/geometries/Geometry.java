@@ -1,6 +1,6 @@
 package geometries;
 import primitives.Point;
-import java.util.Vector;
+import primitives.Vector;
 
 public interface Geometry {
      Vector getNormal(Point p);

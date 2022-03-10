@@ -22,13 +22,10 @@ public class Plane implements Geometry{
     public Vector getNormal(Point p){
         return null;
     }
-
-
     @Override
     public String toString() {
         return "Plane [q0=" + q0.toString() + ", normal=" + normal.toString() + "]";
     }
-    @Override
     public Vector getNormal(){
         return null;
     }
