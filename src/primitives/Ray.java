@@ -1,10 +1,23 @@
 package primitives;
 import static primitives.Util.isZero;
 import primitives.Vector;
+/**
+ * Class Ray is the basic class representing a Ray of Euclidean primitives in Cartesian
+ * Object is founded in geometry
+ *  @author sendi pardes Israel Shlomo
+ *
+ */
 
 public class Ray {
+    /**
+     * constructor that receives a vector and a point and creates a ray
+     * @param dir
+     * @param p0
+     */
      final Point p0;
      final  Vector dir;
+
+
 
     public Point getP0() {
         return this.p0;

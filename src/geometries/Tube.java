@@ -3,7 +3,11 @@ import primitives.Vector;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Util;
-
+/**
+ * Tube
+ * @author sendi pardes Israel Shlomo
+ *
+ */
 public class Tube implements Geometry{
     Ray axisRay;
     Double radius;
