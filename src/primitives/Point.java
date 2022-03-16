@@ -1,5 +1,4 @@
 package primitives;
-import static primitives.Util.isZero;
 
 /**
  * Class Point
@@ -13,11 +12,11 @@ public class Point {
      * constructor that receiving Object from Double3 type
      * @param spoint
      */
-    public final Double3 spoint;
+     final Double3 xyz;
 
-    public Double3 getSpoint()
+    public Double3 getXyz()
     {
-        return spoint;
+        return xyz;
     }
     /**
      * constructor that receiving the values of the three coordinates from Double
@@ -26,8 +25,10 @@ public class Point {
      * @param z
      */
     public Point(double x,double y,double z) {
-        spoint =new Double3(x,y,z);}
-    public Point(Double3 d){spoint =d;}
+        xyz =new Double3(x,y,z);}
+
+    public Point(Double3 d){
+        xyz =d;}
 
     @Override
     public boolean equals(Object obj)
@@ -36,11 +37,11 @@ public class Point {
         if (obj == null) return false;
         if (!(obj instanceof Point)) return false;
         Point other = (Point)obj;
-        return (this.spoint == other.spoint);
+        return (this.xyz.equals(other.xyz));
     }
     @Override
     public String toString() {
-        return String.format("Point: "+ spoint.toString());
+        return String.format("Point: "+ xyz.toString());
     }
     /**
      * Sum two floating point triads into a new triad where each couple of numbers
@@ -51,11 +52,7 @@ public class Point {
      */
     public 	Point add(Point p2)
     {
-        double X = p2.spoint.d1 + this.spoint.d1;
-        double Y = p2.spoint.d2 + this.spoint.d2;
-        double Z = p2.spoint.d3 + this.spoint.d3;
-        Point newpoint = new Point(X,Y,Z);
-        return newpoint;
+       return new Point(this.xyz.add(p2.xyz));
     }
     /**
      * Subtract two floating point triads into a new triad where each couple of
@@ -65,11 +62,7 @@ public class Point {
      * @return result of add
      */
     public Vector subtract(Point p2){
-        double x = this.spoint.d1-p2.spoint.d1;
-        double y = this.spoint.d2-p2.spoint.d2;
-        double z = this.spoint.d3-p2.spoint.d3;
-        Vector newVector = new Vector(x,y,z);
-        return newVector;
+        return new Vector(this.xyz.subtract(p2.xyz));
     }
 
 
