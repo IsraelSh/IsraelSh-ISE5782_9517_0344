@@ -1,5 +1,4 @@
 package primitives;
-import static primitives.Util.isZero;
 
 /**
  * This class extends Point class and will handle all functions related to the Vector
@@ -27,6 +26,8 @@ public class Vector extends Point {
         if(Double3.ZERO.equals(d3)) throw new IllegalArgumentException("Can't create the zero vector");
 
     }
+
+
     @Override
     public String toString() {return "Vector = " + super.toString();}
 
@@ -41,8 +42,8 @@ public class Vector extends Point {
     }
 
     public Vector scale(double scl) {
-        Vector v = new Vector(this.spoint.d1*scl,this.spoint.d2*scl,this.spoint.d3*scl);
-        return v;
+
+        return  new Vector(this.xyz.scale(scl));
     }
     /**
      * Vector product
@@ -51,11 +52,12 @@ public class Vector extends Point {
      */
     public Vector crossProduct(Vector v)
     {
-        double x = this.spoint.d2*v.spoint.d3 - this.spoint.d3*v.spoint.d2;
-        double y = this.spoint.d1*v.spoint.d3-this.spoint.d3*v.spoint.d1;
-        double z = this.spoint.d1*v.spoint.d2-this.spoint.d2*v.spoint.d1;
-        Vector newvector = new Vector(x,-y,z);
-        return newvector;
+        double x = this.xyz.d2*v.xyz.d3 - this.xyz.d3*v.xyz.d2;
+        double y = this.xyz.d1*v.xyz.d3-this.xyz.d3*v.xyz.d1;
+        double z = this.xyz.d1*v.xyz.d2-this.xyz.d2*v.xyz.d1;
+        Vector newv = new Vector(x,-y,z);
+        return newv;
+
     }
 
     /**
@@ -63,8 +65,8 @@ public class Vector extends Point {
      * @return length of the vector squared
      */
     public double lengthSquared()
-    {
-        double squared = this.spoint.d1*this.spoint.d1+this.spoint.d2*this.spoint.d2+this.spoint.d3*this.spoint.d3;
+    { //fix
+        double squared = this.xyz.d1*this.xyz.d1+this.xyz.d2*this.xyz.d2+this.xyz.d3*this.xyz.d3;
         return squared;
     }
     /**
@@ -73,8 +75,7 @@ public class Vector extends Point {
      */
     public double length()
     {
-        double squared = lengthSquared();
-        return Math.sqrt(squared);
+        return Math.sqrt(lengthSquared());
     }
     /**
      * normalize this vector
@@ -83,8 +84,9 @@ public class Vector extends Point {
 
     public Vector normalize()
     {
+        /// fix
         double dis = length();
-        Vector newvector = new Vector(this.spoint.d1/dis,this.spoint.d2/dis,this.spoint.d3/dis);
+        Vector newvector = new Vector(this.xyz.d1/dis,this.xyz.d2/dis,this.xyz.d3/dis);
         return newvector;
     }
     /**
@@ -94,11 +96,19 @@ public class Vector extends Point {
      */
     public double dotProduct(Vector v)
     {
-        return this.spoint.d1 * v.spoint.d1 + this.spoint.d2 * v.spoint.d2 + this.spoint.d3 * v.spoint.d3;
+        /// fix
+        return this.xyz.d1 * v.xyz.d1 + this.xyz.d2 * v.xyz.d2 + this.xyz.d3 * v.xyz.d3;
     }
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (!(obj instanceof Vector)) return false;
+        Vector other = (Vector) obj;
+        return this.xyz.equals(other.xyz) && this.xyz.equals(other.xyz);
+
+
+
     }
 
     public Vector subtract (Vector v){
