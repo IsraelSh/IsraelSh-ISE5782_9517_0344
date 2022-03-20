@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-package unittest;
-
         import geometries.Plane;
         import org.junit.jupiter.api.Test;
         import primitives.Point;
