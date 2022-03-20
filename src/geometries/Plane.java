@@ -37,7 +37,7 @@ public class Plane implements Geometry{
     }
 
     public Vector getNormal(Point p){
-        return null;
+        return normal;
     }
     @Override
     public String toString() {
