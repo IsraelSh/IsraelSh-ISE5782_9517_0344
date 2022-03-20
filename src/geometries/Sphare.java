@@ -22,7 +22,8 @@ public class Sphare implements Geometry{
     }
     @Override
     public Vector getNormal(Point p){
-        return null;
+        //the normal to sphere is the subtraction of the given point from the center. we get the normal vector
+        return center.subtract(p).normalize();
     }
 
     public Point getCenter() {

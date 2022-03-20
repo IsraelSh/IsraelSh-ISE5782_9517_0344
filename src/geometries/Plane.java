@@ -48,7 +48,7 @@ public class Plane implements Geometry{
      * @return the normalize vector
      */
     public Vector getNormal(){
-        return null;
+        return normal;
     }
     @Override
     public boolean equals(Object obj) {
