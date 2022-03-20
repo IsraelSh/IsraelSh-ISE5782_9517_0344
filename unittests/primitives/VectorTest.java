@@ -1,11 +1,13 @@
 package primitives;
+import primitives.Vector;
+import static primitives.Util.isZero;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class VectorTest{
+public class VectorTest{
 
     /**
      * Test method for {@link primitives.Vector#add(primitives.Vector)}.

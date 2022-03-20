@@ -27,7 +27,7 @@ public class Ray {
         return this.dir;
     }
 
-    public Ray(Point p, Vector v)
+    public Ray(Vector v, Point p)
     {
         super();
         p0 = p;
