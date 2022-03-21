@@ -53,24 +53,3 @@ class PlaneTest {
     }
 
 }
-
-
-
-/*class PlaneTest {
-
-    @Test
-    void getNormal() {
-    }
-
-    @Test
-    void testToString() {
-    }
-
-    @Test
-    void testGetNormal() {
-    }
-
-    @Test
-    void testEquals() {
-    }
-}*/

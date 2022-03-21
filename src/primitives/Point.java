@@ -50,7 +50,7 @@ public class Point {
      * @param  p2  right handle side operand for addition
      * @return result of add
      */
-    public 	Point add(Point p2)
+    public Point add(Point p2)
     {
        return new Point(this.xyz.add(p2.xyz));
     }
