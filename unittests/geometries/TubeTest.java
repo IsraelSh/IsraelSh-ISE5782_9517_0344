@@ -33,7 +33,7 @@ class TubeTest {
         Vector n= t.getNormal(p);
         //assertTrue("bad normal to tube",isZero(r.getDir().dotProduct(n)));
         // =============== Boundary Values Tests ==================
-        //
+
         try {
             new Tube(r,0).getNormal(p);
             fail("GetNormal() should throw an exception, but it failed");

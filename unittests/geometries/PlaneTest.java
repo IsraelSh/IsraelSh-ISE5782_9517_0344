@@ -34,7 +34,7 @@ class PlaneTest {
         assertTrue(isZero(v1.dotProduct(n)), "ERROR: incorrect normal to plane");//if the dot product== 0, it's really the normal to the plane
         assertTrue(isZero(v2.dotProduct(n)), "ERROR: incorrect normal to plane");//if the dot product== 0, it's really the normal to the plane
         assertTrue(isZero(v3.dotProduct(n)), "ERROR: incorrect normal to plane");//if the dot product== 0, it's really the normal to the plane
-        // =============== Boundary Values Tests ==================
+        //Boundary
 
         try {
             new Plane(new Point(1, 2, 3), new Point(2, 4, 6), new Point(4, 8, 12)).getNormal(p1);//a case that all the points are on the same vector- cannot create the plane

@@ -47,7 +47,7 @@ public class PolygonTests {
 						new Point(0.5, 0.25, 0.5)), //
 				"Constructed a concave polygon");
 
-		// =============== Boundary Values Tests ==================
+		//     =============== Boundary Values Tests ==================
 
 		// TC10: Vertex on a side of a quadrangular
 		assertThrows(IllegalArgumentException.class, //
