@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for geometries. Plane class
- * @author Tamar zommer, dvori azarkovitz
+ *
  */
 class PlaneTest {
 

@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for geometries.Sphare class
- * @author Tamar zommer, dvori azarkovitz
+ *
  */
 public class SphareTest {
 
