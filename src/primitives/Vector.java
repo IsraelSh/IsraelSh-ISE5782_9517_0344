@@ -39,7 +39,7 @@ public class Vector extends Point {
     public Vector add(Vector v)
     {
 
-          return this.add();
+          return this.add(v);
     }
 
     public Vector scale(double scl) {
