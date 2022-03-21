@@ -147,6 +147,7 @@ public class VectorTest{
      * Test method for {@link primitives.Vector#normalize()}.
      */
     @Test
+
     public void testNormalize() {
         Vector v1 = new Vector(1, 2, 3);
         // ============ Equivalence Partitions Tests ==============
