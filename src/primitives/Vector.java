@@ -39,7 +39,7 @@ public class Vector extends Point {
     public Vector add(Vector v)
     {
     //infinite loop!
-          return this.add(v);
+          return new Vector(super.xyz.add(v.xyz));
     }
 
     public Vector scale(double scl) {
@@ -112,7 +112,7 @@ public class Vector extends Point {
 
     }
 
-    public Vector subtract (Vector v){
-        return this.subtract(v);
+    public Vector subtract (Vector v) {
+        return new Vector(super.xyz.subtract(v.xyz));
     }
 }
