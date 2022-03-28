@@ -52,6 +52,7 @@ public class Vector extends Point {
      * @return Vector product between this to other
      */
     public Vector crossProduct(Vector v)
+
     {
         double x = this.xyz.d2*v.xyz.d3 - this.xyz.d3*v.xyz.d2;
         double y = -(this.xyz.d1*v.xyz.d3-this.xyz.d3*v.xyz.d1);
