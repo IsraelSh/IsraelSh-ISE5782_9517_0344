@@ -74,7 +74,7 @@ public class VectorTest{
 
         // length
 
-        assertEquals(v1.length() * v2.length(), vr.length());
+        assertEquals(v1.length() * v3.length(), vr.length(),0.00001);
 
         // TC02: Test cross-product result orthogonality to its operands
         assertTrue(isZero(vr.dotProduct(v1)), "crossProduct() result is not orthogonal to 1st operand");
