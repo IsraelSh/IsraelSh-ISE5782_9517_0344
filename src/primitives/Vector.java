@@ -55,9 +55,9 @@ public class Vector extends Point {
 
     {
         double x = this.xyz.d2*v.xyz.d3 - this.xyz.d3*v.xyz.d2;
-        double y = this.xyz.d1*v.xyz.d3-this.xyz.d3*v.xyz.d1;
+        double y = -(this.xyz.d1*v.xyz.d3-this.xyz.d3*v.xyz.d1);
         double z = this.xyz.d1*v.xyz.d2-this.xyz.d2*v.xyz.d1;
-        Vector newv = new Vector(x,-y,z);
+        Vector newv = new Vector(x,y,z);
         return newv;
 
     }
