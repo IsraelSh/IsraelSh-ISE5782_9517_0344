@@ -13,7 +13,7 @@ public class Vector extends Point {
      * @param y
      * @param y
      */
-    public Vector(double x, double y ,double z) {
+    public Vector(double x, double y , double z) {
         super(x,y,z);
         if(Double3.ZERO.equals(new Double3(x,y,z))) throw new IllegalArgumentException("Can't create the zero vector");
     }
@@ -59,17 +59,14 @@ public class Vector extends Point {
         double z = this.xyz.d1*v.xyz.d2-this.xyz.d2*v.xyz.d1;
         Vector newv = new Vector(x,y,z);
         return newv;
-
     }
-
     /**
      * Calculate the length of the vector squared
      * @return length of the vector squared
      */
     public double lengthSquared()
-    { //fix
-        double squared = this.xyz.d1*this.xyz.d1+this.xyz.d2*this.xyz.d2+this.xyz.d3*this.xyz.d3;
-        return squared;
+    {
+        return xyz.product(xyz).sum();
     }
     /**
      * Calculate the length of the vector
@@ -98,8 +95,7 @@ public class Vector extends Point {
      */
     public double dotProduct(Vector v)
     {
-        /// fix
-        return this.xyz.d1 * v.xyz.d1 + this.xyz.d2 * v.xyz.d2 + this.xyz.d3 * v.xyz.d3;
+        return xyz.product(v.xyz).sum();
     }
     @Override
     public boolean equals(Object obj) {
@@ -108,12 +104,8 @@ public class Vector extends Point {
         if (!(obj instanceof Vector)) return false;
         Vector other = (Vector) obj;
         return this.xyz.equals(other.xyz) && this.xyz.equals(other.xyz);
-
-
-
+    }
+    public Vector subtract (Vector v) {return new Vector(super.xyz.subtract(v.xyz));
     }
 
-    public Vector subtract (Vector v) {
-        return new Vector(super.xyz.subtract(v.xyz));
-    }
 }

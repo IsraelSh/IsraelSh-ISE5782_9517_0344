@@ -28,7 +28,7 @@ public class Point {
         xyz =new Double3(x,y,z);}
 
     public Point(Double3 d){
-        xyz =d;}
+        xyz = d;}
 
     @Override
     public boolean equals(Object obj)

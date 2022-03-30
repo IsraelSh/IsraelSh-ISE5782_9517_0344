@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
 import primitives.*;
-import geometries.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for geometries.Sphare class

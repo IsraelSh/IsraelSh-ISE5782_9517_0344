@@ -1,6 +1,5 @@
 package primitives;
-import static primitives.Util.isZero;
-import primitives.Vector;
+
 /**
  * Class Ray is the basic class representing a Ray of Euclidean primitives in Cartesian
  * Object is founded in geometry
@@ -15,10 +14,7 @@ public class Ray {
      * @param p0
      */
      final Point p0;
-     final  Vector dir;
-
-
-
+     final Vector dir;
     public Point getP0() {
         return this.p0;
     }
@@ -27,8 +23,7 @@ public class Ray {
         return this.dir;
     }
 
-    public Ray(Vector v, Point p)
-    {
+    public Ray(Vector v, Point p) {
         super();
         p0 = p;
         dir = v.normalize();

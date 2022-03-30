@@ -1,5 +1,4 @@
 package primitives;
-import primitives.Vector;
 import static primitives.Util.isZero;
 
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class VectorTest{
 
     /**
-     * Test method for {@link primitives.Vector#add(primitives.Vector)}.
+     * Test method for {@link Vector#add(Vector)}.
      */
     @Test
     public void testAdd() {
@@ -28,7 +27,7 @@ public class VectorTest{
     }
 
     /**
-     * Test method for {@link primitives.Vector#subtract(primitives.Vector)}.
+     * Test method for {@link Vector#subtract(Vector)}.
      */
     @Test
     public void testSubtract() {
@@ -46,7 +45,7 @@ public class VectorTest{
     }
 
     /**
-     * Test method for {@link primitives.Vector#scale(double)}.
+     * Test method for {@link Vector#scale(double)}.
      */
     @Test
     public void testScale() {
@@ -61,7 +60,7 @@ public class VectorTest{
     }
 
     /**
-     * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
+     * Test method for {@link Vector#crossProduct(Vector)}.
      */
     @Test
     public void testCrossProduct() {
@@ -90,7 +89,7 @@ public class VectorTest{
 
 
     /**
-     * Test method for {@link primitives.Vector#dotProduct(primitives.Vector)}.
+     * Test method for {@link Vector#dotProduct(Vector)}.
      */
     @Test
     public void testDotProduct() {
@@ -108,11 +107,11 @@ public class VectorTest{
     }
 
     /**
-     * Test method for {@link primitives.Vector#lenghtSquared()}.
+     * Test method for {@link Vector#lenghtSquared()}.
      */
     @Test
     public void testLenghtSquared() {
-        Vector v1 = new Vector (1, 3, 9);
+        Vector v1 = new Vector(1, 3, 9);
         // Equivalence
         assertTrue(isZero(v1.lengthSquared() - 91), "LengthSquared() wrong result length");
         // Boundary
@@ -124,7 +123,7 @@ public class VectorTest{
     }
 
     /**
-     * Test method for {@link primitives.Vector#length()}.
+     * Test method for {@link Vector#length()}.
      */
     @Test
     public void testLength() {
@@ -140,7 +139,7 @@ public class VectorTest{
     }
 
     /**
-     * Test method for {@link primitives.Vector#normalize()}.
+     * Test method for {@link Vector#normalize()}.
      */
     @Test
 

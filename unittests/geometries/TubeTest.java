@@ -5,16 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-
-import geometries.Tube;
-import org.junit.jupiter.api.Test;
-
 import primitives.Point;
 import primitives.Ray;
-import primitives.Ray.*;
 import primitives.Vector;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for geometries. Tube class
