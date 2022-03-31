@@ -3,6 +3,8 @@ import primitives.Point;
 import primitives.Vector;
 import primitives.Ray;
 
+import java.util.List;
+
 /**
  * Plane
  * @author sendi pardes Israel Shlomo
@@ -60,5 +62,10 @@ public class Plane implements Geometry{
             return false;
         Plane other = (Plane) obj;
         return this.normal.equals(other.normal)&&this.q0.equals(other.q0);
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        return null;
     }
 }
