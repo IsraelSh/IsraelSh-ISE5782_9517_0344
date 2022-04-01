@@ -11,43 +11,34 @@ import java.util.List;
 public class Geometries implements Intersectable {
 
 
-
-
     List<Intersectable> _intersectables;
 
     public Geometries() {
         _intersectables = new LinkedList<Intersectable>();
     }
 
-    public Geometries(Intersectable...intersectables) {
+    public Geometries(Intersectable... intersectables) {
         _intersectables = new LinkedList<Intersectable>();
-        Collections.addAll(_intersectables,intersectables);
+        Collections.addAll(_intersectables, intersectables);
     }
 
-    public void add(Intersectable... intersectables){
-        Collections.addAll(_intersectables,intersectables);
+    public void add(Intersectable... intersectables) {
+        Collections.addAll(_intersectables, intersectables);
     }
 
-
-    @Override
-    public List<Point> findIntsersections(Ray ray) {
-        return null;
-    }
 
     @Override
     public List<Point> findIntersections(Ray ray) {
-        ArrayList<Point> points=null;
-        for(var geometry: _intersectables){
-            var geometryList=geometry.findIntsersections(ray);
-            if(geometryList!=null){
-                if(points==null){
-                    points=new ArrayList<>();
+        ArrayList<Point> points = null;
+        for (var geometry : _intersectables) {
+            var geometryList = geometry.findIntersections(ray);
+            if (geometryList != null) {
+                if (points == null) {
+                    points = new ArrayList<>();
                 }
                 points.addAll(geometryList);
             }
         }
         return points;
     }
-
-
 }

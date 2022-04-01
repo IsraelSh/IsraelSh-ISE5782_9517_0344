@@ -37,8 +37,9 @@ public class Sphare implements Geometry{
         return "Sphere [center=" + center + ", radius=" + radius + "]";
     }
 
+
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    public List<Point> findIntersections(Ray ray) {
         Point p0 = ray.getP0();
         Point O  = center;
         Vector v =ray.getDir();
@@ -72,4 +73,7 @@ public class Sphare implements Geometry{
         }
         return null;
     }
+
+
+
 }
