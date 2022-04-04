@@ -3,6 +3,9 @@ import primitives.Vector;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Util;
+
+import java.util.List;
+
 /**
  * Tube
  * @author sendi pardes Israel Shlomo
@@ -49,4 +52,8 @@ public class Tube implements Geometry{
         return "Tube [axisRay=" + axisRay + ", radius=" + radius + "]";
     }
 
+    @Override
+    public List<Point> findIntersections(Ray ray) {
+        return null;
+    }
 }

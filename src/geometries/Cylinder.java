@@ -2,6 +2,9 @@ package geometries;
 import primitives.Ray;
 import primitives.Point;
 import primitives.Vector;
+
+import java.util.List;
+
 /**
  * Cylinder
  * @author sendi pardes Israel Shlomo
@@ -9,7 +12,7 @@ import primitives.Vector;
  */
 
 public class Cylinder extends Tube implements Geometry{
-    double hight;
+    private double hight;
 
     public Cylinder (double radius,Ray ray,double hight) {
         super(ray,radius);
@@ -24,4 +27,8 @@ public class Cylinder extends Tube implements Geometry{
         return "Cylinder [hight=" + hight + "]";
     }
 
+    @Override
+    public List<Point> findIntersections(Ray ray) {
+        return null;
+    }
 }

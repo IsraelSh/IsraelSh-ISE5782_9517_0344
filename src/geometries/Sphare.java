@@ -1,8 +1,8 @@
 package geometries;
 
-import primitives.Point;
-import primitives.Util;
-import primitives.Vector;
+import primitives.*;
+
+import java.util.List;
 
 /**
  * Sphare
@@ -36,4 +36,44 @@ public class Sphare implements Geometry{
     public String toString() {
         return "Sphere [center=" + center + ", radius=" + radius + "]";
     }
+
+
+    @Override
+    public List<Point> findIntersections(Ray ray) {
+        Point p0 = ray.getP0();
+        Point O  = center;
+        Vector v =ray.getDir();
+
+        Vector U =O.subtract(p0);
+        double tm =v.dotProduct(U);
+        double d = Math.sqrt(U.lengthSquared()- tm*tm);
+        if(d>=radius)
+        {
+            return null;
+        }
+        double th = Math.sqrt(radius*radius -d*d);
+        double t1 =tm-th;
+        double t2 = tm+th;
+
+        if(t1>0 && t2 >0)
+        {
+            Point p1 =p0.add(v.scale(t1));
+            Point p2 =p0.add(v.scale(t2));
+            return List.of(p1,p2);
+        }
+        if(t1>0)
+        {
+            Point p1 =p0.add(v.scale(t1));
+            return (List.of(p1));
+        }
+        if(t2>0)
+        {
+            Point p2 =p0.add(v.scale(t2));
+            return (List.of(p2));
+        }
+        return null;
+    }
+
+
+
 }
