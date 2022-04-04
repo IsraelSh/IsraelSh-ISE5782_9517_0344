@@ -87,6 +87,7 @@ public class SphereTest {
                 sphere.findIntersections(new Ray( new Vector(1, 0, 0),new Point(0.5, 0, 0))),
                 "Ray starts inside ");
 
+
         // TC16: Ray starts at the center (1 points)
         assertEquals(List.of(new Point(2, 0, 0)),
                 sphere.findIntersections(new Ray( new Vector(1, 0, 0),new Point(0.5, 0, 0))),
