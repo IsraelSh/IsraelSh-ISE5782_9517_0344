@@ -4,14 +4,14 @@ import java.util.List;
 import primitives.Color;
 import primitives.Point;
 import primitives.Ray;
-import scene.Scene;
+import scene.scene;
 
 public class RayTracerBasic extends RayTracerBase {
     /**
      * @param sc
      * Ctor using super class constructor
      */
-    public RayTracerBasic(Scene sc) {
+    public RayTracerBasic(scene sc) {
         super(sc);
     }
 
