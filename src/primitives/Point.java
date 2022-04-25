@@ -65,6 +65,20 @@ public class Point {
         return new Vector(this.xyz.subtract(p2.xyz));
     }
 
+    /**
+     * The function calculates the distance between two points in squared.
+     * @param p2 point p2
+     * @return distance between two points in squared.
+     */
+    public double distanceSquared(Point p2){
+        return (xyz.d1 - p2.xyz.d1) * (xyz.d1 - p2.xyz.d1) +
+                (xyz.d2 - p2.xyz.d2) * (xyz.d2 - p2.xyz.d2) +
+                (xyz.d3 - p2.xyz.d3) * (xyz.d3 - p2.xyz.d3);
+    }
+
+    public double distance(Point p2){
+        return Math.sqrt(distanceSquared(p2));
+    }
 
     public double getX() {
         return xyz.d1;
