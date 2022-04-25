@@ -1,19 +1,12 @@
 package renderer;
 
+
+
+
 import primitives.Color;
 import renderer.ImageWriter;
 
-/**
- * Test for ImageWriter class
- */
 public class ImageWriterTest {
-
-    /**
-     * Create a red grid (16x10) on a black background (800x500 pixel)
-     *
-     * Test method for {@link renderer.ImageWriter#writeToImage()}.
-     */
-
     public void testWriteToImage() {
         ImageWriter myImg = new ImageWriter("myImg", 800, 500);
         Color blue = new Color(0, 0, 270);
