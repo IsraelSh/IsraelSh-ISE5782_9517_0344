@@ -1,23 +1,28 @@
 package renderer;
 
-
-
-
+import org.junit.jupiter.api.Test;
 import primitives.Color;
-import renderer.ImageWriter;
 
+/**
+ * Image Writer Test unit
+ */
 public class ImageWriterTest {
+
+    /**
+     * Test method for ImageWriter
+     * Test for creating a simple image with pixel
+     */
+    @Test
     public void testWriteToImage() {
-        ImageWriter myImg = new ImageWriter("myImg", 800, 500);
-        Color blue = new Color(0, 0, 270);
-        Color red = new Color(270, 0, 0);
-        for (int x = 0; x < 800; x++)
-            for (int y = 0; y < 500; y++) {
-                if (y % 50 == 0 || x % 50 == 0)
-                    myImg.writePixel(x, y, red);
+        ImageWriter image = new ImageWriter("imageTestNew", 800, 500);
+        // The nested loop colors each pixel
+        for (int i = 0; i < 800; i++)
+            for (int j = 0; j < 500; j++)
+                if (i % 50 == 0 && i != 0 || j % 50 == 0 && j != 0)
+                    image.writePixel(i, j, new Color(255, 0, 0));
                 else
-                    myImg.writePixel(x, y, blue);
-            }
-        myImg.writeToImage();
+                    image.writePixel(i, j, new Color(255, 255, 0));
+
+        image.writeToImage();
     }
 }
