@@ -64,9 +64,8 @@ public class Vector extends Point {
      * Calculate the length of the vector squared
      * @return length of the vector squared
      */
-    public double lengthSquared()
-    {
-        return xyz.product(xyz).sum();
+    public double lengthSquared(){
+        return super.distanceSquared(new Point(0,0,0));
     }
     /**
      * Calculate the length of the vector
@@ -93,9 +92,9 @@ public class Vector extends Point {
      * @param v
      * @return Scalar product between this to other
      */
-    public double dotProduct(Vector v)
-    {
-        return xyz.product(v.xyz).sum();
+    public double dotProduct(Vector v){
+        Double3 temp =  this.xyz.product(v.xyz);
+        return temp.d1 + temp.d2 + temp.d3;
     }
     @Override
     public boolean equals(Object obj) {

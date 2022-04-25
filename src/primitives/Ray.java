@@ -1,6 +1,7 @@
 package primitives;
 
 import static primitives.Util.isZero;
+import java.util.List;
 
 /**
  * Class Ray is the basic class representing a Ray of Euclidean primitives in Cartesian
@@ -55,6 +56,22 @@ public class Ray {
             throw new IllegalArgumentException("t is equal to 0 produce an illegal ZERO vector");
         }
         return p0.add(dir.scale(t));
+    }
+    /**
+     *
+     * @param listPoint
+     * @return The closest point to the began of the ray
+     */
+    public Point findClosestPoint(List<Point> listPoint) {
+
+        if (listPoint == null) //In case of an empty list
+            return null;
+        Point closePoint = listPoint.get(0);	//Save the first point in the list
+        for (Point p : listPoint) {
+            if (closePoint.distance(p0) > p.distance(p0))	//In case the distance of closes point is bigger than the p point
+                closePoint = p;
+        }
+        return closePoint;
     }
 
 
