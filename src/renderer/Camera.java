@@ -179,7 +179,7 @@ public class Camera {
      * Find a ray from p0 to the center of the pixel from the given resolution.
      * @param nX the number of the rows
      * @param nY the number of the columns
-     * @param j column
+     * @param j spacipic  column
      * @param i row
      * @return ray from p0 the center to the center of the pixel in row i column j
      */
@@ -188,7 +188,7 @@ public class Camera {
         Point pCenter, pCenterPixel;
         double ratioY, ratioX, yI, xJ;
 
-        pCenter = p0.add(vTo.scale(distance));
+        pCenter = p0.add(vTo.scale(distance)); //give us the center of the pixel
         ratioY = alignZero(height / nY);
         ratioX = alignZero(width / nX);
 
