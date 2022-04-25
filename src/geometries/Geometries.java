@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
+//we do it because we want to do Compsite template
 public class Geometries implements Intersectable {
 
 
