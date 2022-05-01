@@ -7,8 +7,8 @@ import scene.scene;
 /**
  * RayTracerBase class
  */
-public abstract class RayTracerBase {
-    protected scene scene;
+public abstract class RayTracerBase<scene> {
+    protected  scene scene;
 
     /**
      *ctor for scene field
