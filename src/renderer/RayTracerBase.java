@@ -8,13 +8,13 @@ import Scene.Scene;
  * RayTracerBase class
  */
 public abstract class RayTracerBase<scene> {
-    protected  Scene scene;
+    protected  Scene Scene;
 
     /**
      *ctor for scene field
      */
-    public RayTracerBase(Scene scenet){
-        scene = scenet;
+    public RayTracerBase(Scene Scene){
+        this.Scene = Scene;
     }
 
     /**

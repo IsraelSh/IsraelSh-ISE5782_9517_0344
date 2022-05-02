@@ -6,7 +6,7 @@ import lighting.AmbientLight;
 import geometries.*;
 import primitives.*;
 import renderer.*;
-import scene.scene;
+import Scene.Scene;
 
 /**
  * Test rendering a basic image
@@ -21,12 +21,12 @@ public class RenderTests {
 	 */
 	@Test
 	public void basicRenderTwoColorTest() {
-		scene scene = new scene("Test scene")//
+		Scene Scene = new Scene("Test scene")//
 				.setAmbientLight(new AmbientLight(new Color(255, 191, 191), //
 						                          new Double3(1,1,1))) //
 				.setBackground(new Color(75, 127, 90));
 
-		scene.geometries.add(new Sphare( new Point(0, 0, -100),50),
+		Scene.geometries.add(new Sphare( new Point(0, 0, -100),50),
 				new Triangle(new Point(-100, 0, -100), new Point(0, 100, -100), new Point(-100, 100, -100)), // up
 																													// left
 				new Triangle(new Point(-100, 0, -100), new Point(0, -100, -100), new Point(-100, -100, -100)), // down
@@ -37,7 +37,7 @@ public class RenderTests {
 				.setVPDistance(100) //
 				.setVPSize(500, 500) //
 				.setImageWriter(new ImageWriter("base render test", 1000, 1000))				
-				.setRayTracer(new RayTracerBasic(scene));
+				.setRayTracer(new RayTracerBasic(Scene));
 
 		camera.renderImage();
 		camera.printGrid(100, new Color(java.awt.Color.YELLOW));
@@ -49,7 +49,7 @@ public class RenderTests {
 	 */
 	@Test
 	public void basicRenderXml() {
-		scene scene = new scene("XML Test scene");
+		Scene scene = new Scene("XML Test scene");
 		// enter XML file name and parse from XML file into scene object
 		// ...
 
