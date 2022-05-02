@@ -11,7 +11,7 @@ public class RayTracerBasic extends RayTracerBase {
      * @param sc
      * Ctor using super class constructor
      */
-    public RayTracerBasic(scene sc) {
+    public RayTracerBasic(Scene sc) {
         super(sc);
     }
 
@@ -20,7 +20,7 @@ public class RayTracerBasic extends RayTracerBase {
      */
     @Override
     public Color traceRay(Ray ray) {
-        List<Point> intersectionsPoints = scene.geometries.findIntersections(ray);
+        List<Point> intersectionsPoints = Scene.geometries.findIntersections(ray);
         if (intersectionsPoints == null)
             return scene.background;
         else
