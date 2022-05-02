@@ -14,7 +14,7 @@ import Scene.Scene;
  * @author Dan
  */
 public class RenderTests {
-
+		//WE ARE THE KINKS
 	/**
 	 * Produce a scene with basic 3D model and render it into a png image with a
 	 * grid
