@@ -2,19 +2,19 @@ package renderer;
 
 import primitives.Color;
 import primitives.Ray;
-import scene.scene;
+import Scene.Scene;
 
 /**
  * RayTracerBase class
  */
 public abstract class RayTracerBase<scene> {
-    protected  scene scene;
+    protected  Scene Scene;
 
     /**
      *ctor for scene field
      */
-    public RayTracerBase(scene scene){
-        this.scene=scene;
+    public RayTracerBase(Scene Scene){
+        this.Scene = Scene;
     }
 
     /**

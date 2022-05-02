@@ -4,14 +4,14 @@ import java.util.List;
 import primitives.Color;
 import primitives.Point;
 import primitives.Ray;
-import scene.scene;
+import Scene.Scene;
 
 public class RayTracerBasic extends RayTracerBase {
     /**
      * @param sc
      * Ctor using super class constructor
      */
-    public RayTracerBasic(scene sc) {
+    public RayTracerBasic(Scene sc) {
         super(sc);
     }
 
@@ -20,9 +20,9 @@ public class RayTracerBasic extends RayTracerBase {
      */
     @Override
     public Color traceRay(Ray ray) {
-        List<Point> intersectionsPoints = scene.geometries.findIntersections(ray);
+        List<Point> intersectionsPoints = Scene.geometries.findIntersections(ray);
         if (intersectionsPoints == null)
-            return scene.background;
+            return Scene.background;
         else
             return calcColor(ray.findClosestPoint(intersectionsPoints));
     }
@@ -34,6 +34,6 @@ public class RayTracerBasic extends RayTracerBase {
      */
     private Color calcColor(Point point)
     {
-        return scene.ambientLight.getIntensity();
+        return Scene.ambientLight.getIntensity();
     }
 }
