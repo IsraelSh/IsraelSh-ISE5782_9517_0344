@@ -11,24 +11,28 @@ import java.util.List;
  * @author sendi pardes Israel Shlomo
  *
  */
-public class Tube implements Geometry{
+public class Tube extends Geometry {
     Ray axisRay;
     Double radius;
+
     public Tube(Ray axisRay, double radius) {
         super();
-        if(Util.isZero(radius) || radius < 0)
+        if (Util.isZero(radius) || radius < 0)
             throw new IllegalArgumentException("Zero or negative radius");
         this.axisRay = axisRay;
         this.radius = radius;
     }
+
     public Ray getAxisRay() {
         return axisRay;
     }
+
     public double getRadius() {
         return radius;
     }
+
     @Override
-    public Vector getNormal(Point p){
+    public Vector getNormal(Point p) {
         //get ray point and vector
         Point p0 = axisRay.getP0();
         Vector v = axisRay.getDir();
@@ -38,8 +42,7 @@ public class Tube implements Geometry{
 
         //if the point is not on the same level then get the point
         //and return the normal
-        if(!Util.isZero(t))
-        {
+        if (!Util.isZero(t)) {
             Point o = p0.add(v.scale(t));//o=p0+t*v
             return p.subtract(o).normalize();
         }
@@ -47,13 +50,15 @@ public class Tube implements Geometry{
         //if the point is on the same level then return normal
         return p.subtract(p0).normalize();
     }
+
     @Override
     public String toString() {
         return "Tube [axisRay=" + axisRay + ", radius=" + radius + "]";
     }
 
+
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         return null;
     }
 }

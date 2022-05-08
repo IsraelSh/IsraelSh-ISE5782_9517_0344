@@ -1,5 +1,6 @@
 package renderer;
 
+import geometries.Geometry;
 import geometries.Intersectable;
 import primitives.*;
 
@@ -8,7 +9,7 @@ import java.util.MissingResourceException;
 import java.util.List;
 import static primitives.Util.*;
 
-public class Camera {
+public class Camera{
     private Point p0;
     private Vector vTo;
     private Vector vUp;
@@ -220,7 +221,7 @@ public class Camera {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 ray = constructRay(nX, nY, i, j);
-                intersectionPoints = intersect.findIntersections(ray);
+                intersectionPoints = intersect.findGeoIntersectionsHelper(ray);
                 if (intersectionPoints != null) {
                     result.addAll(intersectionPoints);
                 }

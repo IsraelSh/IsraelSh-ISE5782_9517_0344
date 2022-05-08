@@ -3,40 +3,48 @@ package geometries;
 import primitives.Point;
 import primitives.Ray;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-//we do it because we want to do Compsite template
-public class Geometries implements Intersectable {
 
+public class Geometries extends Intersectable {
+    private List<Intersectable> geometriesBodies;
 
-    List<Intersectable> _intersectables;
-
+    /* Empty ctor
+     */
     public Geometries() {
-        _intersectables = new LinkedList<Intersectable>();
+        geometriesBodies = new LinkedList<>();
     }
 
-    public Geometries(Intersectable... intersectables) {
-        _intersectables = new LinkedList<Intersectable>();
-        Collections.addAll(_intersectables, intersectables);
+    /* Ctor with list of geometries
+     * @param geometries
+     */
+    public Geometries(Intersectable... geometries)
+    {
+        geometriesBodies = List.of(geometries);
     }
 
-    public void add(Intersectable... intersectables) {
-        Collections.addAll(_intersectables, intersectables);
+    /**
+     * Adds list of geometries to the current list
+     * @param geometries
+     */
+    public void add(Intersectable... geometries)
+    {
+        geometriesBodies.addAll(List.of(geometries));
     }
-
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
-        ArrayList<Point> points = null;
-        for (var geometry : _intersectables) {
-            var geometryList = geometry.findIntersections(ray);
-            if (geometryList != null) {
-                if (points == null) {
-                    points = new ArrayList<>();
-                }
-                points.addAll(geometryList);
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
+        if (geometriesBodies.isEmpty()) // In case the collection is empty
+            return null;
+
+        List<GeoPoint> points = null, result;
+        for (Intersectable body: geometriesBodies) {
+            result = body.findGeoIntersectionsHelper(ray);
+            if(result != null){
+                if(points == null)
+                    points = new LinkedList<GeoPoint>(result);
+                else
+                    points.addAll(result);
             }
         }
         return points;

@@ -37,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.*;
         /* TC01: plane with 9 points that intersect */
 
         /* Variables */
-        Plane planeTestCase1 = new Plane( new Vector(0, 0, 1),new Point(0, 0, -3));
+        Plane planeTestCase1 = new Plane( new Point(0, 0, -3), new Vector(0, 0, 1));
         camera.setVPDistance(1).setVPSize(3, 3);
         List<Point> result1 = camera.findRay(3, 3, planeTestCase1);
 
@@ -47,7 +47,7 @@ import static org.junit.jupiter.api.Assertions.*;
         /* TC02: plane with 9 points that intersect */
 
         /* Variables */
-        Plane planeTestCase2 = new Plane(new Vector(0, 0.5, -1),new Point(0, 0, -2));
+        Plane planeTestCase2 = new Plane(new Point(0, 0, -2),new Vector(0, 0.5, -1));
         camera.setVPDistance(1).setVPSize(3, 3);
         List<Point> result2 = camera.findRay(3, 3, planeTestCase2);
 
@@ -58,7 +58,7 @@ import static org.junit.jupiter.api.Assertions.*;
         /* TC03: plane with 6 points that intersect */
 
         /* Variables */
-        Plane planeTestCase3 = new Plane( new Vector(0, 4, -1),new Point(0, 0, -2));
+        Plane planeTestCase3 = new Plane( new Point(0, 0, -2), new Vector(0, 4, -1));
         camera.setVPDistance(1).setVPSize(3, 3);
         List<Point> result3 = camera.findRay(3, 3, planeTestCase3);
 
