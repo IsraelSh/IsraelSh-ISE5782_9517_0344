@@ -11,7 +11,7 @@ import java.util.List;
  *
  */
 
-public class Cylinder extends Tube implements Geometry{
+public class Cylinder extends Tube {
     private double hight;
 
     public Cylinder (double radius,Ray ray,double hight) {
@@ -27,8 +27,4 @@ public class Cylinder extends Tube implements Geometry{
         return "Cylinder [hight=" + hight + "]";
     }
 
-    @Override
-    public List<Point> findIntersections(Ray ray) {
-        return null;
-    }
 }
