@@ -7,6 +7,9 @@ import geometries.*;
 import primitives.*;
 import renderer.*;
 import Scene.Scene;
+
+import java.util.List;
+
 import static java.awt.Color.*;
 
 /**
@@ -71,7 +74,6 @@ public class LightsTests {
 				.renderImage() //
 				.writeToImage(); //
 	}
-
 	/**
 	 * Produce a picture of a sphere lighted by a spot light
 	 */
@@ -162,4 +164,62 @@ public class LightsTests {
 				.writeToImage(); //
 	}
 
+
+	/**
+	 * Produce a picture of a sphere lighted by all three light source types
+	 */
+
+	@Test
+	public void sphereDirectionalPointSpot() {
+		scene1.geometries.add(sphere);
+		scene1.lights.add(new DirectionalLight(new Color(500, 400, 50), new Vector(1, -4, -1))); // Above the sphere
+		scene1.lights.add(new PointLight(new Color(400, 100, 0), new Point(100, 0, 0))); // Right of the sphere
+		scene1.lights.add(new SpotLight(new Color(700, 300, 100), new Point(-100, -50, 50), new Vector(1, 1, -3))); // Left of the sphere
+
+	}
+	/**
+	 * Produce a picture of a sphere lighted by a multiple lights
+	 */
+	@Test
+	public void sphereMultiLights() {
+
+		scene1.geometries.add(new Sphare(new Point(0, 0, 50), 50)
+				.setMaterial(new Material().setKD(0.5).setKS(0.5).setNShininess(100))
+				.setEmission(new Color(java.awt.Color.BLUE)));
+
+		scene1.lights.addAll(List.of(
+				new SpotLight(new Color(200, 300, 0), new Point(-100, 20, -50), new Vector(1, -1, 1)).setKC(1.2)
+						.setKL(0.00001).setKQ(0.00000001),
+				new DirectionalLight(new Color(0, 400, 300), new Vector(-1, 1, 1)),
+				new PointLight(new Color(500, 50, 100), new Point(100, 100, -50)).setKC(1).setKL(0.0001)
+						.setKQ(0.0000001)));
+
+		ImageWriter imageWriter = new ImageWriter("sphereMultiLights", 500, 500);
+
+		camera1.setImageWriter(imageWriter) //
+				.setRayTracer(new RayTracerBasic(scene1)) //
+				.renderImage() //
+				.writeToImage(); //
+	}
+
+	/**
+	 * Produce a picture of a two triangles lighted by a multiple lights
+	 */
+	@Test
+	public void triangleMultiLights() {
+
+		scene2.geometries.add(triangle1, triangle2);
+		scene2.lights.addAll(List.of(
+				new SpotLight(new Color(700, 20, 50), new Point(10, -10, -130), new Vector(-2, -2, -1)).setKL(0.0001)
+						.setKQ(0.000005),
+				new PointLight(new Color(0, 0, 300), new Point(10, -10, -130)).setKL(0.0005).setKQ(0.0002),
+				new DirectionalLight(new Color(5, 100, 5), new Vector(0, 0, -1))));
+
+		ImageWriter imageWriter = new ImageWriter("triangleMultiLights", 500, 500);
+
+		camera2.setImageWriter(imageWriter) //
+				.setRayTracer(new RayTracerBasic(scene2)) //
+				.renderImage() //
+				.writeToImage(); //
+	}
 }
