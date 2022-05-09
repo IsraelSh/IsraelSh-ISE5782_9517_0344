@@ -1,3 +1,4 @@
+import geometries.Intersectable;
 import geometries.Plane;
 import geometries.Sphare;
 import geometries.Triangle;
@@ -39,7 +40,7 @@ import static org.junit.jupiter.api.Assertions.*;
         /* Variables */
         Plane planeTestCase1 = new Plane( new Point(0, 0, -3), new Vector(0, 0, 1));
         camera.setVPDistance(1).setVPSize(3, 3);
-        List<Point> result1 = camera.findRay(3, 3, planeTestCase1);
+        List<Intersectable.GeoPoint> result1 = camera.findRay(3, 3, planeTestCase1);
 
         /* Asserts */
         assertEquals(9, result1.size(), "ERROR: Except for 9 intersect points");
@@ -49,7 +50,7 @@ import static org.junit.jupiter.api.Assertions.*;
         /* Variables */
         Plane planeTestCase2 = new Plane(new Point(0, 0, -2),new Vector(0, 0.5, -1));
         camera.setVPDistance(1).setVPSize(3, 3);
-        List<Point> result2 = camera.findRay(3, 3, planeTestCase2);
+        List<Intersectable.GeoPoint> result2 = camera.findRay(3, 3, planeTestCase2);
 
         /* Asserts */
         assertEquals(9, result2.size(), "ERROR: Except for 9 intersect points");
@@ -60,7 +61,7 @@ import static org.junit.jupiter.api.Assertions.*;
         /* Variables */
         Plane planeTestCase3 = new Plane( new Point(0, 0, -2), new Vector(0, 4, -1));
         camera.setVPDistance(1).setVPSize(3, 3);
-        List<Point> result3 = camera.findRay(3, 3, planeTestCase3);
+        List<Intersectable.GeoPoint> result3 = camera.findRay(3, 3, planeTestCase3);
 
         /* Asserts */
         assertEquals(6, result3.size(), "ERROR: Except for 9 intersect points");
@@ -75,7 +76,7 @@ import static org.junit.jupiter.api.Assertions.*;
         Triangle triangleTestCase1 = new Triangle(new Point(0, 1, -2), new Point(1, -1, -2),
                 new Point(-1, -1, -2));
         camera.setVPDistance(1).setVPSize(3, 3);
-        List<Point> result1 = camera.findRay(3, 3, triangleTestCase1);
+        List<Intersectable.GeoPoint> result1 = camera.findRay(3, 3, triangleTestCase1);
 
         /* Asserts */
         assertEquals(1, result1.size(), "ERROR: Except for one intersect point");
@@ -86,7 +87,7 @@ import static org.junit.jupiter.api.Assertions.*;
         Triangle triangleTestCase2 = new Triangle(new Point(0, 20, -2), new Point(1, -1, -2),
                 new Point(-1, -1, -2));
         camera.setVPDistance(1).setVPSize(3, 3);
-        List<Point> result2 = camera.findRay(3, 3, triangleTestCase2);
+        List<Intersectable.GeoPoint> result2 = camera.findRay(3, 3, triangleTestCase2);
 
         /* Asserts */
         assertEquals(2, result2.size(), "ERROR: Except for 2 intersect points");
@@ -98,12 +99,15 @@ import static org.junit.jupiter.api.Assertions.*;
             /* Variables */
             Sphare sphereTC01 = new Sphare(new Point(0, 0, -3), 1);
             camera.setVPDistance(1).setVPSize(3, 3);
-            List<Point> result01 = camera.findRay(3, 3, sphereTC01);
-            List<Point> exceptedResult01 = Arrays.asList(new Point(0, 0, -2), new Point(0, 0, -4));
+            List<Intersectable.GeoPoint> result01 = camera.findRay(3, 3, sphereTC01);
+            List<Intersectable.GeoPoint> exceptedResult01 = Arrays.asList(
+                    new Intersectable.GeoPoint(sphereTC01,new Point(0, 0, -2)),
+                    new Intersectable.GeoPoint(sphereTC01, new Point(0, 0, -4)));
 
             /* Asserts */
             Assertions.assertNotNull(result01,
                     "ERROR: There are no intersection, and except for 2 points");
+
             assertTrue(
                     exceptedResult01.size() == result01.size() && exceptedResult01.containsAll(result01),
                     "ERROR: There aren't the same points that intersect");
@@ -114,7 +118,7 @@ import static org.junit.jupiter.api.Assertions.*;
             Sphare sphereTC02 = new Sphare(new Point(0, 0, -2.5), 2.5);
             Camera cameraTC02 = new Camera(new Point(0, 0, 0.5), vTo, vUp);
             cameraTC02.setVPDistance(1).setVPSize(3, 3);
-            List<Point> result02 = cameraTC02.findRay(3, 3, sphereTC02);
+            List<Intersectable.GeoPoint> result02 = cameraTC02.findRay(3, 3, sphereTC02);
 
             /* Asserts */
             assertEquals(18, result02.size(), "ERROR: Except for 18 intersect points");
@@ -128,7 +132,7 @@ import static org.junit.jupiter.api.Assertions.*;
             Sphare sphereTC03 = new Sphare(new Point(0, 0, -2), 2);
             Camera cameraTC03 = new Camera(new Point(0, 0, 0.5), vTo, vUp);
             cameraTC03.setVPDistance(1).setVPSize(3, 3);
-            List<Point> result03 = cameraTC03.findRay(3, 3, sphereTC03);
+            List<Intersectable.GeoPoint> result03 = cameraTC03.findRay(3, 3, sphereTC03);
 
             /* Asserts */
             assertEquals(10, result03.size(), "ERROR: Except for 10 intersect points");
@@ -140,7 +144,7 @@ import static org.junit.jupiter.api.Assertions.*;
             Sphare sphereTC04 = new Sphare(new Point(0, 0, 0), 4);
             Camera cameraTC04 = new Camera(new Point(0, 0, 1), vTo, vUp);
             cameraTC04.setVPDistance(1).setVPSize(3, 3);
-            List<Point> result04 = cameraTC04.findRay(3, 3, sphereTC04);
+            List<Intersectable.GeoPoint> result04 = cameraTC04.findRay(3, 3, sphereTC04);
 
             /* Asserts */
             assertEquals(9, result04.size(), "ERROR: Except for 9 intersect points");
@@ -150,7 +154,7 @@ import static org.junit.jupiter.api.Assertions.*;
             /* Variables */
             Sphare sphereTC05 = new Sphare(new Point(0, 0, 1), 0.5);
             camera.setVPDistance(1).setVPSize(3, 3);
-            List<Point> result05 = camera.findRay(3, 3, sphereTC05);
+            List<Intersectable.GeoPoint> result05 = camera.findRay(3, 3, sphereTC05);
 
             /* Asserts */
             assertNull(result05, "ERROR: Except for null, there are no intersect points");

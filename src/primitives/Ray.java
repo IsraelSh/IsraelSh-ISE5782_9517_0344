@@ -29,7 +29,7 @@ public class Ray {
     }
 
     public Ray(Vector v, Point p) {
-        super();
+
         p0 = p;
         dir = v.normalize();
     }
