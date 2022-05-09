@@ -1,6 +1,5 @@
 package renderer;
 
-import geometries.Geometry;
 import geometries.Intersectable;
 import primitives.*;
 
@@ -164,8 +163,9 @@ public class Camera{
 
     /**
      * Method for creating rays and for every ray gets the color for the pixel
+     * @return
      */
-    public void renderImage() {
+    public Camera renderImage() {
         // In case that not all of the fields are filled
         if (imageWriter == null || rayTracerBase == null)
             throw new MissingResourceException("Missing", "resource", "exception");
@@ -180,6 +180,7 @@ public class Camera{
                 imageWriter.writePixel(j, i, castRay(nX, nY, j, i)); // Traces the color of the ray and writes it to the image
             }
         }
+        return this;
     }
 
     /**
@@ -213,15 +214,15 @@ public class Camera{
             throw new MissingResourceException("Missing", "resource", "for an imageWriter");
         imageWriter.writeToImage();
     }
-    public List<Point> findRay(int nX, int nY, Intersectable intersect) {
+    public List<Intersectable.GeoPoint> findRay(int nX, int nY, Intersectable intersect) {
         Ray ray;
-        List<Point> result = new LinkedList<>();
-        List<Point> intersectionPoints;
+        List<Intersectable.GeoPoint> result = new LinkedList<>();
+        List<Intersectable.GeoPoint> intersectionPoints;
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 ray = constructRay(nX, nY, i, j);
-                intersectionPoints = intersect.findGeoIntersectionsHelper(ray);
+                intersectionPoints = intersect.findGeoIntersections(ray) ;
                 if (intersectionPoints != null) {
                     result.addAll(intersectionPoints);
                 }

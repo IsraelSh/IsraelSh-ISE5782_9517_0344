@@ -8,6 +8,7 @@ import primitives.*;
 public class PointLight extends Light implements LightSource{
     private Point position;
     private double kC = 1, kL = 0, kQ = 0;
+    private Vector kk = new Vector(1,0,0);
 
     /*
             * @param intensity
@@ -16,12 +17,13 @@ public class PointLight extends Light implements LightSource{
      * @param l
      * @param q
      */
-    public PointLight(Color intensity, Point position, double c, double l, double q) {
+    public PointLight(Color intensity, Point position) {
         super(intensity);
         this.position = position;
-        kC = c;
-        kL = l;
-        kQ = q;
+       // kk=KK;
+        //kC = c;,Vector KK
+       // kL = l;
+        //kQ = q;
     }
 
     /* setKC

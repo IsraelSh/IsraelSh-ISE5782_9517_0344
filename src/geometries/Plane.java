@@ -73,9 +73,8 @@ public class Plane extends Geometry{
     public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         // In case there are zeroes in denominator and numerator
         // For example when ray is parallel to the plane
-        if (ray.getP0().equals(p0) || isZero(this.normal.dotProduct(ray.getDir())))
-        isZero(this.normal.dotProduct(p0.subtract(ray.getP0())));
-        else
+        if (ray.getP0().equals(p0) || isZero(this.normal.dotProduct(ray.getDir()))
+        || isZero(this.normal.dotProduct(p0.subtract(ray.getP0()))))
         return null;
 
         double t = (this.normal.dotProduct(p0.subtract(ray.getP0()))) / (this.normal.dotProduct(ray.getDir()));

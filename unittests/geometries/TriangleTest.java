@@ -31,7 +31,7 @@ class TriangleTest {
 
         // ============ Equivalence Partitions Tests ==============
         // TC01: The intersection point is in the triangle
-        assertEquals(List.of(new Point(0, 3, 1)),
+        assertEquals(List.of(new Intersectable.GeoPoint(triangle, new Point(0, 3, 1))),
                 triangle.findGeoIntersectionsHelper(new Ray( new Vector(-1, 0, 1),new Point(1, 3, 0))),
                 "The point supposed to be in the triangle");
 
