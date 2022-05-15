@@ -10,7 +10,7 @@ public class AmbientLight extends Light {
      * @param kA
      *  constructor build the ambient light intensity
      */
-    public AmbientLight(Color iA, Double3 kA) {
+    public AmbientLight(Color iA, double kA) {
         super(iA.scale(kA));
     }
 
