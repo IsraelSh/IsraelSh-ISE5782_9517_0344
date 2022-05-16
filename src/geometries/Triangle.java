@@ -9,7 +9,7 @@ import static primitives.Util.alignZero;
 
 /* The class defines a geometries type - "Triangle".
         */
-public class Triangle  extends Polygon implements FlatGeometry {
+public class Triangle extends Polygon {
 
     /* A ctor that gets 3 parameters(Point type).
             * @param p1 point p1
@@ -28,7 +28,6 @@ public class Triangle  extends Polygon implements FlatGeometry {
     @Override
     public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         List<GeoPoint> resultPoint = plane.findGeoIntersectionsHelper(ray);
-
 
         if (resultPoint == null) // In case there is no intersection with the plane return null
             return null;

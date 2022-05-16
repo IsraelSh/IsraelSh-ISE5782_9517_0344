@@ -19,8 +19,8 @@ public class Ray {
      * @param dir
      * @param p0
      */
-    final Point p0;
-    final Vector dir;
+     final Point p0;
+     final Vector dir;
     private static final double DELTA = 0.1;
     public Point getP0() {
         return this.p0;

@@ -25,7 +25,6 @@ public class Geometries extends Intersectable {
 
     /**
      * Adds list of geometries to the current list
-     * .
      * @param geometries
      */
     public void add(Intersectable... geometries)

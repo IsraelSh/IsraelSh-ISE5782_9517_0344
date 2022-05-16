@@ -187,10 +187,12 @@ public class LightsTests {
 				.setMaterial(new Material().setKD(0.5).setKS(0.5).setNShininess(100))
 				.setEmission(new Color(java.awt.Color.BLUE)));
 
-
 		scene1.lights.addAll(List.of(
-				new SpotLight(new Color(200, 300, 0), new Point(-100, -40, 100), new Vector(1, -1, 1)).setKC(0.5).setKL(0.001).setKQ(0.0000000001), new DirectionalLight(new Color(0, 400, 300), new Vector(-1, 1, 1)), new PointLight(new Color(500, 50, 100), new Point(100, 100, -50)).setKC(1).setKL(0.0001).setKQ(0.0000001)
-		,new PointLight(new Color(380, 50, 100), new Point(20, 20, 150)).setKC(1).setKL(0.0001).setKQ(0.0000001)));
+				new SpotLight(new Color(200, 300, 0), new Point(-100, 20, -50), new Vector(1, -1, 1)).setKC(1.2)
+						.setKL(0.00001).setKQ(0.00000001),
+				new DirectionalLight(new Color(0, 400, 300), new Vector(-1, 1, 1)),
+				new PointLight(new Color(500, 50, 100), new Point(100, 100, -50)).setKC(1).setKL(0.0001)
+						.setKQ(0.0000001)));
 
 		ImageWriter imageWriter = new ImageWriter("sphereMultiLights", 500, 500);
 

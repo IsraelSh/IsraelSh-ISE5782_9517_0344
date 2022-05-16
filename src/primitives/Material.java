@@ -13,7 +13,7 @@ public class Material {
     /* set KD
      * @param kD
      * @return
-     */
+    */
     public Material setKD(double kD){
         this.kD = new Double3(kD);
         return this;
