@@ -57,11 +57,6 @@ public class Scene {
         return this;
     }
 
-    /**
-     *
-     * @param lights
-     * @return list of all Lights that are counter with Geometries
-     */
     public  Scene setLights (List<LightSource> lights ){
         this.lights = lights;
         return this;

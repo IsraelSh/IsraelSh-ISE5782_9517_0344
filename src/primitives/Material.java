@@ -30,15 +30,22 @@ public class Material {
     /**
      * @param kT the kT to set
      */
-    public Material setkT(double kT) {
+    public Material setKT(double kT) {
         this.kT = new Double3(kT);
         return this;
     }/**
      * @param kR the kR to set
      */
-    public Material setkR(double kR) {
+    public Material setKR(double kR) {
         this.kR = new Double3(kR);
         return this;
+    }
+
+    public Double3 getKT() {
+        return kT;
+    }
+    public Double3 getKR() {
+        return kR;
     }
 
     public Material setNShininess(int nShininess){
