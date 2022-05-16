@@ -1,7 +1,6 @@
 package renderer;
 import java.util.List;
 
-import geometries.FlatGeometry;
 import lighting.LightSource;
 import primitives.Color;
 import primitives.*;
@@ -12,7 +11,10 @@ import geometries.Intersectable.GeoPoint;
 import static primitives.Util.alignZero;
 
 public class RayTracerBasic extends RayTracerBase {
-    private static final double EPS =0.1;
+    /**
+     * Head of rays movement const
+     */
+    private static final double DELTA = 0.1;
 
     /**
      * @param sc
@@ -59,7 +61,6 @@ public class RayTracerBasic extends RayTracerBase {
             return Color.BLACK;
         int nShininess = intersection.geometry.getMaterial().nShininess;
 
-
         Double3 kd = intersection.geometry.getMaterial().kD;
         Double3 ks = intersection.geometry.getMaterial().kS;
         Color color = Color.BLACK;
@@ -67,30 +68,15 @@ public class RayTracerBasic extends RayTracerBase {
             Vector l = lightSource.getL(intersection.point);
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0) { // checks if nl == nv
-                if(unshaded(intersection,lightSource,l,n,nl,nv))
-                {
+                if (unshaded(lightSource, l, n, intersection)) {
                     Color lightIntensity = lightSource.getIntensity(intersection.point);
                     color = color.add(calcDiffusive(kd, l, n, lightIntensity),
                             calcSpecular(ks, l, n, v, nShininess, lightIntensity));
                 }
-
             }
+
         }
         return color;
-    }
-
-    private boolean unshaded(GeoPoint gp,LightSource lightSource,Vector l, Vector n, double nl,double nv)
-    {
-        Point point = gp.point;
-        Vector lightDirection =l.scale(-1); //from the point to light source
-
-        //double MaxDis = gp.point.distance(lightSource.)
-        Vector epsVector = n.scale(nv<0 ? EPS : -EPS);
-        Point pointRay = gp.point.add(epsVector);
-        Ray lightRay = new Ray(gp.point,n,lightDirection);
-        List<GeoPoint>  intersections = Scene.getGeometries().findGeoIntersections(lightRay);
-
-        return intersections == null;
     }
 
 
@@ -126,5 +112,30 @@ public class RayTracerBasic extends RayTracerBase {
             vr = 0;
         vr = Math.pow(vr, nShininess);
         return lightIntensity.scale(ks.scale(vr));
+    }
+
+    /**
+     * Checks if there is no shade between a point and a light source
+     *
+     * @param l
+     * @param n
+     * @param gp
+     * @return Boolean value if the unshaded check was successful
+     */
+    private boolean unshaded(LightSource light, Vector l, Vector n, GeoPoint gp) {
+        Vector lightDirection = l.scale(-1); // from point to light source
+        Vector delta = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
+        Point point = gp.point.add(delta);
+        Ray lightRay = new Ray(lightDirection,point);
+        List<GeoPoint> intersections = Scene.geometries.findGeoIntersections(lightRay);
+        if (intersections == null)
+            return true;
+
+        double lightDistance = light.getDistance(gp.point);
+        for (GeoPoint geop : intersections) {
+            if (alignZero(geop.point.distance(gp.point) - lightDistance) <= 0)
+                return false;
+        }
+        return true; //in case all intersections are in between lightDistance and gp.
     }
 }

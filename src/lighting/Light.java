@@ -2,6 +2,7 @@ package lighting;
 
 
 import primitives.Color;
+import primitives.Point;
 
 /* abstract class Light
  */
@@ -22,7 +23,5 @@ abstract class Light {
     public Color getIntensity(){
         return intensity;
     }
-
-
 
 }
