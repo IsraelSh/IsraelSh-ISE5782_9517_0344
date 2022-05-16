@@ -1,11 +1,8 @@
-package Scene;
+package scene;
 
 import primitives.*;
 import lighting.*;
 import geometries.*;
-
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Scene class
@@ -16,7 +13,6 @@ public class Scene {
     public Color background = Color.BLACK;
     public AmbientLight ambientLight = new AmbientLight();
     public Geometries geometries;
-    public List<LightSource> lights = new LinkedList<>();
 
     /**
      * @param name
@@ -54,18 +50,6 @@ public class Scene {
      */
     public Scene setGeometries(Geometries geo) {
         this.geometries = geo;
-        return this;
-    }
-    public Geometries getGeometries() {
-        return this.geometries;
-    }
-    /**
-     *
-     * @param lights
-     * @return list of all Lights that are counter with Geometries
-     */
-    public  Scene setLights (List<LightSource> lights ){
-        this.lights = lights;
         return this;
     }
 }
