@@ -216,7 +216,7 @@ public class RayTracerBasic extends RayTracerBase {
         Vector lightDirection = l.scale(-1); // from point to light source
         Vector delta = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
         Point point = gp.point.add(delta);
-        Ray lightRay = new Ray( lightDirection,point);
+        Ray lightRay = new Ray(lightDirection,point);
         List<GeoPoint> intersections = Scene.geometries.findGeoIntersections(lightRay);
         if (intersections == null)
             return true;
