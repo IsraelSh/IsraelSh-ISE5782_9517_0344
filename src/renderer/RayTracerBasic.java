@@ -1,6 +1,7 @@
 package renderer;
 import java.util.List;
 
+import geometries.FlatGeometry;
 import lighting.LightSource;
 import primitives.Color;
 import primitives.*;
@@ -11,6 +12,8 @@ import geometries.Intersectable.GeoPoint;
 import static primitives.Util.alignZero;
 
 public class RayTracerBasic extends RayTracerBase {
+    private static final double EPS =0.1;
+
     /**
      * @param sc
      * Ctor using super class constructor
@@ -56,6 +59,7 @@ public class RayTracerBasic extends RayTracerBase {
             return Color.BLACK;
         int nShininess = intersection.geometry.getMaterial().nShininess;
 
+
         Double3 kd = intersection.geometry.getMaterial().kD;
         Double3 ks = intersection.geometry.getMaterial().kS;
         Color color = Color.BLACK;
@@ -63,14 +67,31 @@ public class RayTracerBasic extends RayTracerBase {
             Vector l = lightSource.getL(intersection.point);
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0) { // checks if nl == nv
-                Color lightIntensity = lightSource.getIntensity(intersection.point);
-                color = color.add(calcDiffusive(kd, l, n, lightIntensity),
-                        calcSpecular(ks, l, n, v, nShininess, lightIntensity));
+                if(unshaded(intersection,lightSource,l,n,nl,nv))
+                {
+                    Color lightIntensity = lightSource.getIntensity(intersection.point);
+                    color = color.add(calcDiffusive(kd, l, n, lightIntensity),
+                            calcSpecular(ks, l, n, v, nShininess, lightIntensity));
+                }
+
             }
         }
         return color;
     }
 
+    private boolean unshaded(GeoPoint gp,LightSource lightSource,Vector l, Vector n, double nl,double nv)
+    {
+        Point point = gp.point;
+        Vector lightDirection =l.scale(-1); //from the point to light source
+
+        //double MaxDis = gp.point.distance(lightSource.)
+        Vector epsVector = n.scale(nv<0 ? EPS : -EPS);
+        Point pointRay = gp.point.add(epsVector);
+        Ray lightRay = new Ray(gp.point,n,lightDirection);
+        List<GeoPoint>  intersections = Scene.getGeometries().findGeoIntersections(lightRay);
+
+        return intersections == null;
+    }
 
 
     /**

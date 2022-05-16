@@ -9,7 +9,7 @@ import static primitives.Util.isZero;
 
 /* The class defines a geometries type - "Plane".
         */
-public class Plane extends Geometry{
+public class Plane extends Geometry implements FlatGeometry{
     private Point p0;
     private Vector normal;
 

@@ -56,7 +56,9 @@ public class Scene {
         this.geometries = geo;
         return this;
     }
-
+    public Geometries getGeometries() {
+        return this.geometries;
+    }
     /**
      *
      * @param lights

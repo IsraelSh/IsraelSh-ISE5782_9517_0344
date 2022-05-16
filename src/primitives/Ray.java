@@ -13,6 +13,9 @@ import java.util.List;
  */
 
 public class Ray {
+
+    private static final double EPS =0.1;
+
     /**
      * constructor that receives a vector and a point and creates a ray
      * @param dir
@@ -33,6 +36,13 @@ public class Ray {
         p0 = p;
         dir = v.normalize();
     }
+
+    public Ray(Point p0,Vector n, Vector dir)
+    {
+        this.p0=p0.add(n.scale(EPS));
+        this.dir=dir.normalize();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -86,6 +96,8 @@ public class Ray {
         }
         return closePoint;
     }
+
+
 
 
 }

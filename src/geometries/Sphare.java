@@ -44,12 +44,16 @@ public class Sphare extends Geometry {
     }
 
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance){
         double r = this.radius;
 
         // Special case: if point p0 == center, that mean that all we need to calculate
         // is the radios mult scalar with the direction, and add p0
         if (center.equals(ray.getP0())) {
+            if(alignZero(radius- maxDistance) > 0)
+            {
+                return null;
+            }
             LinkedList<GeoPoint> result = new LinkedList<GeoPoint>();
             result.add(new GeoPoint(this, ray.getPoint(r)));
             return result;

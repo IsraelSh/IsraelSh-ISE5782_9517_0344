@@ -9,7 +9,7 @@ import static primitives.Util.alignZero;
 
 /* The class defines a geometries type - "Triangle".
         */
-public class Triangle extends Polygon {
+public class Triangle  extends Polygon implements FlatGeometry {
 
     /* A ctor that gets 3 parameters(Point type).
             * @param p1 point p1
