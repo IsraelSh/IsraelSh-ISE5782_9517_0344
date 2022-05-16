@@ -29,6 +29,7 @@ public class Triangle  extends Polygon implements FlatGeometry {
     public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         List<GeoPoint> resultPoint = plane.findGeoIntersectionsHelper(ray);
 
+
         if (resultPoint == null) // In case there is no intersection with the plane return null
             return null;
 
