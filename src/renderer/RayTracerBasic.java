@@ -14,6 +14,8 @@ public class RayTracerBasic extends RayTracerBase {
     /**
      * Head of rays movement const
      */
+    private static final int MAX_CALC_COLOR_LEVEL = 10;
+    private static final double MIN_CALC_COLOR_K = 0.001;
     private static final double DELTA = 0.1;
 
     /**
@@ -137,5 +139,41 @@ public class RayTracerBasic extends RayTracerBase {
                 return false;
         }
         return true; //in case all intersections are in between lightDistance and gp.
+    }
+    private GeoPoint findClosestIntersection(Ray ray) {
+        if(ray == null){
+            return null;
+        }
+
+        List<GeoPoint> points = Scene.geometries.findGeoIntersections(ray);
+        return ray.findClosestGeoPoint(points);
+    }
+    /**
+     * According to the pong model
+     * This model is additive in which we connect all the components that will eventually
+     * make up an image with background colors, self-colors and texture colors.
+     *
+     * @param geoPoint the geometry and the lighted point at him
+     * @param ray      the ray that goes out of the camera
+     * @return the color at the point
+     */
+    private Color calcColor(GeoPoint geoPoint, Ray ray) {
+        return calcColor(geoPoint, ray, MAX_CALC_COLOR_LEVEL, INITIAL_K)
+                .add(Scene.ambientLight.getIntensity());
+    }
+    /**
+     * overload methode of {@link renderer.RayTracerBasic#calcColor(GeoPoint, Ray)}
+     *
+     * @param geoPoint the geometry and the lighted point at him
+     * @param ray      the ray that goes out of the camera
+     * @param level    the level of the recursion
+     * @param k        Represents influencing factors of transparency and reflection
+     * @return the color at the point
+     */
+    private Color calcColor(GeoPoint geoPoint, Ray ray, int level, Double3 k) {
+        Color color = geoPoint.geometry.getEmission()
+                .add(calcLocalEffects(geoPoint, ray, k));
+
+        return 1 == level ? color : color.add(calcGlobalEffects(geoPoint, ray, level, k));
     }
 }
