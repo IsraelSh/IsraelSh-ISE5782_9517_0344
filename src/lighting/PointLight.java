@@ -11,7 +11,7 @@ public class PointLight extends Light implements LightSource{
     private Vector kk = new Vector(1,0,0);
 
     /*
-            * @param intensity
+     * @param intensity
      * @param position
      * @param c
      * @param l
