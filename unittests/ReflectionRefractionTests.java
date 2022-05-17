@@ -106,7 +106,7 @@ public class ReflectionRefractionTests {
 				.writeToImage();
 	}
 
-/*
+
 	@Test
 	public void newOne() {
 		Camera camera = new Camera(new Point(0, 0, 10000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
@@ -117,17 +117,17 @@ public class ReflectionRefractionTests {
 		Scene.geometries.add( //
 				new Sphare( new Point(-950, -900, -1000),400) //
 						.setEmission(new Color(80, 0, 100)) //
-						.setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setShininess(20).setKt(0.5)),
+						.setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setNShininess(20).setKT(0.5)),
 				new Sphare( new Point(-950, -900, -1000),200) //
 						.setEmission(new Color(100, 20, 20)) //
-						.setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setShininess(20)),
+						.setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setNShininess(20)),
 				new Triangle(new Point(1500, -1500, -1500), new Point(-1500, 1500, -1500),
 						new Point(670, 670, 3000)) //
 						.setEmission(new Color(20, 20, 20)) //
 						.setMaterial(new Material().setKR(1)),
 				new Cylinder(400,new Ray( new Vector(0, 0, -1),new Point(-950, -900, -1000)),  20)
 						.setEmission(new Color(20, 30, 100))
-						.setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setShininess(20).setKt(0.5)),
+						.setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setNShininess(20).setKT(0.5)),
 				new Triangle(new Point(1500, -1500, -1500), new Point(-1500, 1500, -1500),
 						new Point(-1500, -1500, -2000)) //
 						.setEmission(new Color(20, 20, 20)) //
@@ -144,7 +144,7 @@ public class ReflectionRefractionTests {
 				.renderImage() //
 				.writeToImage();
 	}
-*/
+
 	/**
 	 *
 	 * produces a picture we created, looks like bubble-gum
