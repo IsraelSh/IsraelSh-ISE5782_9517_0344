@@ -138,7 +138,7 @@ public class ReflectionRefractionTests {
 		Scene.lights.add(new SpotLight(new Color(1020, 400, 400), new Point(-750, -750, -150), new Vector(-1, -1, -4)) //
 				.setKL(0.00001).setKQ(0.000005));
 
-		ImageWriter imageWriter = new ImageWriter("refractionShadow", 500, 500);
+		ImageWriter imageWriter = new ImageWriter("newOne", 500, 500);
 		camera.setImageWriter(imageWriter) //
 				.setRayTracer(new RayTracerBasic(Scene)) //
 				.renderImage() //
@@ -185,7 +185,7 @@ public class ReflectionRefractionTests {
 		Scene.lights.add(new PointLight(new Color(300, 500, 500), new Point(-50, -50, 50))//
 				.setKL(0.00001).setKQ(0.000001));
 
-		ImageWriter imageWriter = new ImageWriter("refractionShadow", 600, 600);
+		ImageWriter imageWriter = new ImageWriter("ourPicture", 600, 600);
 		camera.setImageWriter(imageWriter) //
 				.setRayTracer(new RayTracerBasic(Scene)) //
 				.renderImage() //
