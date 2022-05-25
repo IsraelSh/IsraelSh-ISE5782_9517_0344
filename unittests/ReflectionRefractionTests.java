@@ -59,7 +59,9 @@ public class ReflectionRefractionTests {
 				new Triangle(new Point(1500, -1500, -1500), new Point(-1500, 1500, -1500), new Point(670, 670, 3000)) //
 						.setEmission(new Color(20, 20, 20)) //
 						.setMaterial(new Material().setKR(1)),
-
+				new Cylinder(400,new Ray( new Vector(0, 0, -1),new Point(-950, -900, -1000)),  20)
+						.setEmission(new Color(20, 30, 100))
+						.setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setNShininess(20).setKT(0.5)),
 				new Triangle(new Point(1500, -1500, -1500), new Point(-1500, 1500, -1500),
 						new Point(-1500, -1500, -2000)) //
 						.setEmission(new Color(20, 20, 20)) //
@@ -112,14 +114,14 @@ public class ReflectionRefractionTests {
 		Camera camera = new Camera(new Point(0, 0, 10000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
 				.setVPSize(2500, 2500).setVPDistance(10000); //
 
-		Scene.setAmbientLight(new AmbientLight(new Color(50, 20, 100), 0.5));
+		Scene.setAmbientLight(new AmbientLight(new Color(255, 255, 255), 0.1));
 
 		Scene.geometries.add( //
 				new Sphare( new Point(-950, -900, -1000),400) //
-						.setEmission(new Color(80, 0, 100)) //
+						.setEmission(new Color(32, 17, 240)) //
 						.setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setNShininess(20).setKT(0.5)),
 				new Sphare( new Point(-950, -900, -1000),200) //
-						.setEmission(new Color(100, 20, 20)) //
+						.setEmission(new Color(228, 18, 193)) //
 						.setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setNShininess(20)),
 				new Triangle(new Point(1500, -1500, -1500), new Point(-1500, 1500, -1500),
 						new Point(670, 670, 3000)) //

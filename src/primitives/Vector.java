@@ -26,6 +26,15 @@ public class Vector extends Point {
         if(Double3.ZERO.equals(d3)) throw new IllegalArgumentException("Can't create the zero vector");
 
     }
+    /**
+     * Return an orthogonal vector to a given vector
+     *
+     * @return An orthogonal vector to the given Vector
+     */
+    public Vector getOrthogonal() {
+        double x = getX();
+        return x == 0 ? new Vector(1, 0, 0) : new Vector(-getY(), x, 0);
+    }
 
 
     @Override
